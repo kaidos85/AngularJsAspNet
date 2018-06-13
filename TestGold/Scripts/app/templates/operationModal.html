@@ -1,0 +1,37 @@
+﻿<div class="modal-demo">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Добавить/удалить приход-расход</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        
+        <div class="form-group">
+            <label>Вид операций:</label>
+            <select class="form-control" ng-model="selectedOperation" ng-options="oper.Id as oper.Name for oper in $ctrl.operList"></select>
+        </div>
+        <div class="form-group">
+            <label>Товар:</label>
+            <select class="form-control" ng-model="selectedProduct" ng-options="prod.Id as prod.Name for prod in $ctrl.prodList"></select>
+        </div>
+        <div class="form-group">
+            <label>Дата:</label>
+            <input type='date' class="form-control" placeholder="dd.mm.yyyy" ng-model="PDate" />
+        </div>
+        <div class="form-group">
+            <label>Количество:</label>
+            <input type="text" class="form-control" numbers-only placeholder="Введите ..." ng-model="Quantity">
+        </div>
+        <div class="form-group">
+            <label>Цена:</label>
+            <input type="text" class="form-control" numbers-only placeholder="Введите ..." ng-model="Price">
+        </div>
+        <div class="form-group">
+            <label>Итого:</label>
+            <input type="text" class="form-control" placeholder="0" readonly value="{{Quantity * Price}}">
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Операций";
+}
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/app")
+
+<h2>Операций</h2>
+
+<div class="container" ng-app="simpleCrud">
+    <div class="row" ng-controller="OperationController">        
+        <div class="col-sm-3 panel panel-default" >
+            <div class="panel-body">
+                    <div class="form-group">
+                        <label>Категорий:</label>
+                        <select class="form-control" ng-model="selectedCategory" ng-options="cat.Id as cat.Name for cat in catList">
+                            <option value="---"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Товары:</label>
+                        <select class="form-control" ng-model="selectedProduct" ng-options="prod.Id as prod.Name for prod in prodList">
+                            <option value="---"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Вид операций:</label>
+                        <select class="form-control" ng-model="selectedOperation" ng-options="oper.Id as oper.Name for oper in operList">
+                            <option value="---"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата с :</label>
+                        <input type='date' class="form-control" placeholder="dd.mm.yyyy" ng-model="selectedDate1" />                        
+                    </div>
+                    <div class="form-group">
+                        <label>до:</label>
+                        <input type='date' class="form-control" placeholder="dd.mm.yyyy" ng-model="selectedDate2" />
+                    </div>
+                <button class="btn btn-primary" type="button" ng-click="filter()">Искать</button>
+                <button class="btn btn-warning" type="button" ng-click="abort()">Сброс</button>
+                </div>                
+            </div>
+        <div class="col-sm-9">
+            <div>
+                <div>
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-1">Id</th>
+                                <th>Операция</th>
+                                <th>Товар</th>
+                                <th>Дата</th>
+                                <th>Кол-во</th>
+                                <th>Цена</th>    
+                                <th>Сумма</th>                              
+                                <th class="col-sm-1">Редактировать</th>
+                                <th class="col-sm-1">Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="modalWindow()">
+                                        <span class="glyphicon glyphicon-import" aria-hidden="true">Добавить</span>
+                                    </button>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="item in items">
+                                <td>{{item.Id}}</td>
+                                <td>{{item.OperationTypeName}}</td>
+                                <td>{{item.ProductName}}</td>
+                                <td>{{item.PDateStr}}</td>
+                                <td>{{item.Quantity}}</td>
+                                <td>{{item.Price}}</td>
+                                <td>{{item.Amount}}</td>
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="modalWindow(item)">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </button>
+                                </td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

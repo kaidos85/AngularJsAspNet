@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Товары";
+}
+
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/app")
+
+<h2>Товары</h2>
+
+<div ng-app="simpleCrud">
+    <div ng-controller="ProductController">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th class="col-sm-1">Id</th>
+                    <th>Категорий</th>
+                    <th>Название товара</th>
+                    <th class="col-sm-1">Редаактировать</th>
+                    <th class="col-sm-1">Удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <button class="btn btn-default btn-sm" ng-click="modalWindow()">
+                            <span class="glyphicon glyphicon-import" aria-hidden="true">Добавить</span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="item in items">
+                    <td>{{item.Id}}</td>
+                    <td>{{item.CategoryName}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm" ng-click="modalWindow(item)">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
