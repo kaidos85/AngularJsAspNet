@@ -102,8 +102,8 @@ namespace TestGold.Controllers
                 entity.Quantity = dto.Quantity;
                 entity.Price = dto.Price;
                 entity.Amount = dto.Amount;
-                entity.Remark = dto.Remark;                
-                Json(db.SaveChanges() > 0);
+                entity.Remark = dto.Remark;
+                return Json(db.SaveChanges() > 0);
             }
             return Json(new { msg = "Not found" });
         }

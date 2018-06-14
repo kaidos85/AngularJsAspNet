@@ -42,7 +42,7 @@ namespace TestGold.Controllers
             if(entity != null)
             {
                 entity.Name = dto.Name;
-                Json(db.SaveChanges() > 0);
+                return Json(db.SaveChanges() > 0);
             }
             return Json(new { msg = "Not found" });
         }

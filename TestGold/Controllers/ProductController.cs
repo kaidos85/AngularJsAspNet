@@ -42,7 +42,7 @@ namespace TestGold.Controllers
             {
                 entity.Name = dto.Name;
                 entity.Category_Id = dto.Category_Id;
-                Json(db.SaveChanges() > 0);
+                return Json(db.SaveChanges() > 0);
             }
             return Json(new { msg = "Not found" });
         }
